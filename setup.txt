@@ -1,0 +1,9 @@
+1. Download composer
+	*wget https://getcomposer.org/download/1.0.0-alpha10/composer.phar
+	//you can rename composer.phar to composer by "mv composer.phar composer"
+	*mv composer /usr/local/bin
+2. Install laravel
+	* composer global require "laravel/installer=~1.1"
+		- add .composer/vendor/bin to $PATH
+	* laravel new [project]
+	* chmod -R 777 [project]/storage
