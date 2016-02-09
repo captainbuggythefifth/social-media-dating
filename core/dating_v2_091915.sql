@@ -805,7 +805,6 @@ INSERT INTO `species` (`id`, `specy_name`, `created_at`, `updated_at`, `specy_de
   (3, 'Alien', '2015-10-06 15:51:30', '2015-10-06 15:51:37', 'Yeah', 1, 0);
 
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `updates`
 --
