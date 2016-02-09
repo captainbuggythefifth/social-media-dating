@@ -54,6 +54,21 @@
     </nav>
 </div>
 
+@if(!Session::has('user') && isset($sIndex) && $sIndex == true)
+    <video autoplay loop poster="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/polina.jpg" id="bgvid">
+        <source src="{{ url()  }}/video/polina.webm" type="video/webm">
+    </video>
+    <div class="container" style="padding-top: 150px">
+        <div class="row center">
+            <h1 class="header white-text">Chat with Humans, Animals so much more!</h1>
+        </div>
+        <div class="row center">
+            <a class="waves-effect waves-light btn-large modal-trigger" href="#modal-login"><i class="material-icons left">vpn_key</i>Log In</a>
+            <a class="waves-effect waves-light btn-large" href="/user/create"><i class="material-icons left">cloud</i>Sign Up</a>
+        </div>
+    </div>
+@endif
+
 @include('users.layout.modals.modal-log-in')
 @include('users.layout.modals.modal-comment')
 @include('users.layout.modals.modal-character-avatar-preview')
@@ -78,5 +93,28 @@
 <script src="{{ url('/custom/js/users/ui.js') }}"></script>
 <script src="{{ url('/custom/js/pages/loadfile.js') }}"></script>
 </body>
+<script>
+    var vid = document.getElementById("bgvid"),
+            pauseButton = document.getElementById("vidpause");
+    function vidFade() {
+        vid.classList.add("stopfade");
+    }
+    vid.addEventListener('ended', function() {
+        // only functional if "loop" is removed
+        vid.pause();
+        // to capture IE10
+        vidFade();
+    });
+    pauseButton.addEventListener("click", function() {
+        vid.classList.toggle("stopfade");
+        if (vid.paused) {
+            vid.play();
+            pauseButton.innerHTML = "Pause";
+        } else {
+            vid.pause();
+            pauseButton.innerHTML = "Paused";
+        }
+    })
+</script>
 </html>
 

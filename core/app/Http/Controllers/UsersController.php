@@ -58,7 +58,8 @@ class UsersController extends Controller
     {
         $aCountries = Country::all()->toArray();
         return view('users.users.create')
-            ->with('aCountries', $aCountries);
+            ->with('aCountries', $aCountries)
+            ->with('aUser', ['user']);
     }
 
     /**

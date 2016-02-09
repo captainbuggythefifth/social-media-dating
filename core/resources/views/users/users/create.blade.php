@@ -86,7 +86,7 @@
 
                             <select>
                                 @foreach($aCountries as $aCountry)
-                                    <option value="{{ $aCountry['id'] }}" @if($aCountry['id'] == $aUser['user']['country']) selected @endif> {{ $aCountry['country_name'] }} </option>
+                                    <option value="{{ $aCountry['id'] }}" @if(isset($aUser['user']) && !isEmpty($aUser['user'])) @if($aCountry['id'] == $aUser['user']['country']) selected @endif @endif> {{ $aCountry['country_name'] }} </option>
                                 @endforeach
                             </select>
                         </div>
@@ -114,19 +114,19 @@
                             Gender
                         </p>
                         <p>
-                            <input class="with-gap" name="gender" type="radio" id="male" value="{{ \App\User::USER_GENDER_MALE }}" @if($aUser['user']['gender'] == \App\User::USER_GENDER_MALE) checked @endif required/>
+                            <input class="with-gap" name="gender" type="radio" id="male" value="{{ \App\User::USER_GENDER_MALE }}" @if(isset($aUser['user']) && !isEmpty($aUser['user'])) @if($aUser['user']['gender'] == \App\User::USER_GENDER_MALE) checked @endif @endif required/>
                             <label for="male">Male</label>
                         </p>
                         <p>
-                            <input class="with-gap" name="gender" type="radio" id="female" value="{{ \App\User::USER_GENDER_FEMALE }}" @if($aUser['user']['gender'] == \App\User::USER_GENDER_FEMALE) checked @endif/>
+                            <input class="with-gap" name="gender" type="radio" id="female" value="{{ \App\User::USER_GENDER_FEMALE }}" @if(isset($aUser['user']) && !isEmpty($aUser['user'])) @if($aUser['user']['gender'] == \App\User::USER_GENDER_FEMALE) checked @endif @endif/>
                             <label for="female">Female</label>
                         </p>
                         <p>
-                            <input class="with-gap" name="gender" type="radio" id="in_between" value="{{ \App\User::USER_GENDER_IN_BETWEEN }}" @if($aUser['user']['gender'] == \App\User::USER_GENDER_IN_BETWEEN) checked @endif/>
+                            <input class="with-gap" name="gender" type="radio" id="in_between" value="{{ \App\User::USER_GENDER_IN_BETWEEN }}" @if(isset($aUser['user']) && !isEmpty($aUser['user'])) @if($aUser['user']['gender'] == \App\User::USER_GENDER_IN_BETWEEN) checked @endif @endif/>
                             <label for="in_between">In Between</label>
                         </p>
                         <p>
-                            <input class="with-gap" name="gender" type="radio" id="currently_confused" value="{{ \App\User::USER_GENDER_CURRENTLY_CONFUSED }}" @if($aUser['user']['gender'] == \App\User::USER_GENDER_CURRENTLY_CONFUSED) checked @endif/>
+                            <input class="with-gap" name="gender" type="radio" id="currently_confused" value="{{ \App\User::USER_GENDER_CURRENTLY_CONFUSED }}" @if(isset($aUser['user']) && !isEmpty($aUser['user'])) @if($aUser['user']['gender'] == \App\User::USER_GENDER_CURRENTLY_CONFUSED) checked @endif @endif/>
                             <label for="currently_confused">Currently Confused</label>
                         </p>
                         {!! $errors->first('gender') !!}

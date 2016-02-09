@@ -41,12 +41,16 @@ class PagesController extends Controller
             $aLoggedInUser['user'] = User::where('id', Session::get('user')['id'])->first()->toArray();
             $aLoggedInUser['current_character'] = Character::where('id', $aLoggedInUser['user']['current_character_id'])->first()->toArray();
         }
+        else{
+            $aLoggedInUser = [];
+            $sIndex = true;
+        }
 
 
         return view('users.pages.show')
                 ->with('aLoggedInUser', $aLoggedInUser)
-                ->with('htmlView', $htmlView);
-
+                ->with('htmlView', $htmlView)
+                ->with('sIndex', $sIndex);
 
     }
 
